@@ -1,0 +1,19 @@
+<tr id="tarefa-{{ tarefa.id }}">
+    <td><input type="text" name="titulo" value="{{ tarefa.titulo }}" form="form-{{ tarefa.id }}"></td>
+    <td><input type="text" name="descricao" value="{{ tarefa.descricao }}" form="form-{{ tarefa.id }}"></td>
+    <td>{{ tarefa.criacao }}</td>
+    {% if tarefa.concluida %}
+        <td>{{ tarefa.data_conclusao }}</td>
+        <td><span class="badge text-bg-success">Feita</span></td>
+    {% else %}
+        <td>-</td>
+        <td><span class="badge text-bg-warning">Não feita</span></td>
+    {% endif %}
+    <td>
+        <form id="form-{{ tarefa.id }}" hx-post="/atualizar-htmx/{{ tarefa.id }}" hx-target="#lista">
+            <input type="checkbox" name="concluida" {% if tarefa.concluida %}checked{% endif %}> Concluída
+            <input type="submit" value="salvar">Salvar</button>
+        </form>
+    </td>
+    <td><a href="#" hx-get="/listar-tarefas" hx-trigger="click" hx-target="#lista">Cancelar</a></td>
+</tr>

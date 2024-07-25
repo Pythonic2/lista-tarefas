@@ -1,0 +1,17 @@
+{% for t in tarefas %}
+<tr>
+    <td>{{ t.titulo }}</td>
+    <td>{{ t.descricao }}</td>
+    <td>{{ t.criacao }}</td>
+    {% if t.concluida %}
+        <td>{{ t.data_conclusao }}</td>
+        <td><span class="badge text-bg-success">Feita</span></td>
+    {% else %}
+        <td>-</td>
+        <td><span class="badge text-bg-warning">Não feita</span></td>
+    {% endif %}
+    <td><a href="#" hx-post="/editar-htmx/{{t.id}}" hx-trigger="click" hx-target="#lista">Editar</a></td>
+    <td><a href="#" hx-post="/apagar-htmx/{{t.id}}" hx-trigger="click" hx-target="#lista">Apagar</a></td>
+
+</tr>
+{% endfor %}
