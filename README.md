@@ -1,8 +1,11 @@
 # lista-tarefas
 
-# Para rodar:
+# Para rodar com Docker:
     # 1 -  docker-compose build
     # 2 -  docker-compose up
+
+# Rodar sem docker:
+    - No modulo controllers há um main.py, execute-o, lembre-se da env de host do postgres
 
 # Urls:
     # 1 - '/' Url de login
@@ -14,5 +17,5 @@
     POSTGRES_USER
     POSTGRES_PASSWORD
     SECRET_KEY
-    HOST - se rodar no doccker, tente 'db', para local, localhost
+    HOST - se rodar no docker, tente 'db', para local, localhost
 
