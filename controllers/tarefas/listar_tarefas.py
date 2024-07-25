@@ -80,3 +80,16 @@ def atualizar_htmx(id):
     tarefas = Tarefa.objects.filter(usuario=user).order_by('-id')
     context = {'tarefas': tarefas, 'usuario_logado': usuario_logado}
     return render_template("tarefas/listar_htmx.html", **context)
+
+
+@listar_tarefas_bp.route("/filtrar-htmx/", methods=["GET"])
+def login():
+    filtro = request.args.get('filtro')
+    usuario_logado = session.get('username')
+    user = Usuario.objects.get(nome=usuario_logado)
+    if filtro =="1":
+         tarefas = Tarefa.objects.filter(usuario=user)
+    else:
+        tarefas = Tarefa.objects.filter(usuario=user, concluida=True if filtro=='2' else False)
+    context = {'tarefas':tarefas}
+    return render_template('tarefas/listar_htmx.html',**context)

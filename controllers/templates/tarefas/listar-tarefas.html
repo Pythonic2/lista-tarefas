@@ -42,7 +42,18 @@
                         <th scope="col">ação</th>
                       </tr>
                     </thead>
+                    <form  hx-get="/filtrar-htmx" hx-target="#lista">
+                      <select name="filtro" id="filtro" class="form-select mb-0">
+                          <option value="1">Todas</option>
+                          <option value="2">Feita</option>
+                          <option value="3">A fazer</option>
+                      </select>
+                      <input type="submit" value="Filtrar" id="save-button" class="input100 success"   hx-trigger="click">
+                  </form>
+                  
+                  
                     <tbody id="lista">
+                     
                        {%include 'tarefas/listar_htmx.html'%}
                     </tbody>
                     
@@ -52,9 +63,10 @@
                 {%else%}
                     <span>Saldo: <strong>R$ 0</strong> </span>
                 {%endif%} -->
+                <span><strong><a href="/logout">Sair</a></strong>
+
             </div>
 
-            <span><strong><a href="/logout">Sair</a></strong>
             </span>
           </div>
 		</div>
