@@ -28,6 +28,5 @@ def login():
 
 @auth_bp.route("/logout")
 def logout():
-    # Remover informações da sessão
     session.pop('username', None)
     return redirect('/')

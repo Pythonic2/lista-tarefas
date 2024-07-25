@@ -6,20 +6,20 @@ env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env('SECRET_KEY')
-
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
-
 DATABASES = {
     'default': {
-        'ENGINE': env('SQL_ENGINE'),
-        'NAME': env('SQL_NAME'),
-        'USER': env('SQL_USER'),
-        'PASSWORD': env('SQL_PASSWORD'),
-        'HOST': env('SQL_HOST'),
-        'PORT': env('SQL_PORT'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
+
+
 INSTALLED_APPS = ("db",)
 
-TIME_ZONE = env('TIME_ZONE')
+TIME_ZONE = 'America/Sao_Paulo'

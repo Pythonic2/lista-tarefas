@@ -7,7 +7,7 @@ from tarefas.listar_tarefas import listar_tarefas_bp
 def create_app():
     app = Flask(__name__)
 
-    app.secret_key = 'sua_chave_secreta_aqui'  # Substitua por uma chave secreta segura
+    app.secret_key = 'sua_chave_secreta_aqui'
 
     # Registrar blueprints
     app.register_blueprint(register_bp)
@@ -19,4 +19,4 @@ def create_app():
 app = create_app()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0')

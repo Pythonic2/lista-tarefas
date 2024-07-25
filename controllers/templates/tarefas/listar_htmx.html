@@ -10,7 +10,7 @@
         <td>-</td>
         <td><span class="badge text-bg-warning">Não feita</span></td>
     {% endif %}
-    <td><a href="#" hx-post="/editar-htmx/{{t.id}}" hx-trigger="click" hx-target="#lista">Editar</a></td>
+    <td><a href="/editar-htmx/{{t.id}}">Editar</a></td>
     <td><a href="#" hx-post="/apagar-htmx/{{t.id}}" hx-trigger="click" hx-target="#lista">Apagar</a></td>
 
 </tr>
