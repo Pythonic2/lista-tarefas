@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "./controllers/main.py","--host", "0.0.0.0"]
+CMD ["python", "./controllers/main.py","--host", "0.0.0.0:5000"]

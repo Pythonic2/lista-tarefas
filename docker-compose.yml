@@ -1,27 +1,17 @@
 version: '3.8'
-
 services:
-  db:
-    image: postgres:16
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    env_file:
-      - .env
-
-  web:
-    depends_on:
-      - db
-    build: .
-    command: >
-      sh -c "python manage.py makemigrations &&
-             python manage.py migrate &&
-             python ./controllers/main.py --host 0.0.0.0"
-    volumes:
-      - .:/app
+  lista_tarefas:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    pull_policy: build
+    restart: always
     ports:
-      - "5000:5000"
+      - 5000:5000
     env_file:
-      - .env
-
-volumes:
-  postgres_data:
+      - stack.env
+    networks:
+      - cloudflare_default
+networks:
+  cloudflare_default:
+    external: true
